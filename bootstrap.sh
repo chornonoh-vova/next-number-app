@@ -6,7 +6,7 @@ sudo yum -y install java-1.8.0-openjdk
 
 #create db
 sudo service mariadb start
-sudo service mariadb enable
+sudo systemctl enable mariadb
 
 mysqladmin -uroot create app_db;
 
