@@ -1,4 +1,3 @@
-
 #install mysql
 sudo yum -y install mariadb mariadb-server
 
@@ -13,4 +12,4 @@ mysqladmin -uroot create app_db;
 
 mysql -uroot app_db -e "create table next_number (number int NOT NULL AUTO_INCREMENT, PRIMARY KEY(number));"
 
-java -jar /app/nextNumberApp.jar 1234 &
+#java -jar /app/nextNumberApp.jar 1234 &
