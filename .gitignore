@@ -1,4 +1,6 @@
 .vagrant/*
-.idea/*
-./out/
+.idea
+/out/
+.gradle
+/build/
 package.box
