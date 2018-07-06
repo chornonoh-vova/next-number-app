@@ -25,16 +25,16 @@ usage() {
 #Main
 if [ "$1" != "" ]; then
 	case $1 in
-		-s | --start ) 	start_app
-						exit
-						;;
+		-s | --start ) 	start_app 
+		exit
+		;;
 		-c | --close ) 	close_app
-						exit
-						;;
+		exit
+		;;
 		-h | --help ) 	usage
-						exit
-						;;
+		exit
+		;;
 		* )				usage
-						exit 1
+		exit 1
 	esac
 fi
