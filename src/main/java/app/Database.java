@@ -17,8 +17,9 @@ public class Database {
 
     private Database() {
         try  {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/app_db", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://db:3306/app_db?autoReconnect=true&useSSL=false", "root", "");
             st = conn.createStatement();
+            st.executeUpdate("create table if not exists next_number (number int NOT NULL AUTO_INCREMENT, PRIMARY KEY(number));");
             System.out.println("Connection to DB established");
         } catch (SQLException e) {
             e.printStackTrace();

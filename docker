@@ -1,0 +1,40 @@
+#!/bin/bash
+
+start_app() {
+	#create database folder
+	mkdir data 2>/dev/null
+	#build java part usin Dockerfile
+	docker build -t next-number-app-java .
+	#run
+	docker swarm init && \
+	docker stack deploy -c docker-compose.yml next-number-app && \
+	echo "Successfully started application"
+}
+
+close_app() {
+	docker stack rm next-number-app && docker swarm leave --force
+}
+
+usage() {
+	echo "./docker parameter"
+	echo "-s or --start to build and start next-number-app"
+	echo "-c or --close to shutdown next-number-app"
+	echo "-h or --help to get help"
+}
+
+#Main
+if [ "$1" != "" ]; then
+	case $1 in
+		-s | --start ) 	start_app
+						exit
+						;;
+		-c | --close ) 	close_app
+						exit
+						;;
+		-h | --help ) 	usage
+						exit
+						;;
+		* )				usage
+						exit 1
+	esac
+fi

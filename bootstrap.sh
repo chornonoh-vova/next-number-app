@@ -9,8 +9,8 @@ sudo yum -y localinstall jdk-8u172-linux-x64.rpm
 sudo service mariadb start
 sudo systemctl enable mariadb
 
-mysqladmin -uroot create app_db;
+mysql -uroot -e "create database if not exists app_db";
 
-mysql -uroot app_db -e "create table next_number (number int NOT NULL AUTO_INCREMENT, PRIMARY KEY(number));"
+mysql -uroot app_db -e "create table if not exists next_number (number int NOT NULL AUTO_INCREMENT, PRIMARY KEY(number));"
 
 #java -jar /app/nextNumberApp.jar 1234 &
