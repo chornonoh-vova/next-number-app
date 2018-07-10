@@ -1,0 +1,7 @@
+.git/*
+.vagrant/*
+.idea/*
+out/*
+data/*
+package.box
+*.iml
