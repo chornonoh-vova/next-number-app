@@ -1,8 +1,6 @@
 #!/bin/bash
 
 start_app() {
-	#create database folder
-	mkdir data 2>/dev/null
 	#build java part usin Dockerfile
 	sudo docker build -t next-number-app-java .
 	#run
