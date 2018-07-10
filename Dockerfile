@@ -6,6 +6,7 @@ ADD . /app
 
 EXPOSE 1234
 
-CMD ["/app/gradlew", "build"]
-CMD ["/app/gradlew", "installDist"]
+RUN /app/gradlew build
+RUN /app/gradlew installDist
+
 CMD ["/app/build/install/next-number-app/bin/next-number-app", "1234"]

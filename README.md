@@ -6,7 +6,7 @@
   - [vagrant](https://www.vagrantup.com/downloads.html) - version 2.1.2 at the moment of writing
 
 - To run with Docker
-  - [docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/) - version 18.03 at the moment of writing
+  - [docker](https://docs.docker.com/install/) - version 18.03 at the moment of writing
   - [docker-compose](https://github.com/docker/compose/releases) - version 1.22.0-rc2 at the moment of writing
   
 ## Run

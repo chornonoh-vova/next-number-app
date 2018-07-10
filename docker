@@ -4,15 +4,15 @@ start_app() {
 	#create database folder
 	mkdir data 2>/dev/null
 	#build java part usin Dockerfile
-	docker build -t next-number-app-java .
+	sudo docker build -t next-number-app-java .
 	#run
-	docker swarm init && \
-	docker stack deploy -c docker-compose.yml next-number-app && \
+	sudo docker swarm init && \
+	sudo docker stack deploy -c docker-compose.yml next-number-app && \
 	echo "Successfully started application"
 }
 
 close_app() {
-	docker stack rm next-number-app && docker swarm leave --force
+	sudo docker stack rm next-number-app && sudo docker swarm leave --force
 }
 
 usage() {
@@ -25,16 +25,16 @@ usage() {
 #Main
 if [ "$1" != "" ]; then
 	case $1 in
-		-s | --start ) 	start_app 
+		-s | --start ) start_app
 		exit
 		;;
-		-c | --close ) 	close_app
+		-c | --close ) close_app
 		exit
 		;;
-		-h | --help ) 	usage
+		-h | --help ) usage
 		exit
 		;;
-		* )				usage
+		* ) usage
 		exit 1
 	esac
 fi
