@@ -1,38 +1,41 @@
 #!/bin/bash
 
 start_app() {
-	#build java part usin Dockerfile
-	sudo docker build -t next-number-app-java .
-	#run
-	sudo docker swarm init && \
-	sudo docker stack deploy -c docker-compose.yml next-number-app && \
-	echo "Successfully started application"
+    #build java part usin Dockerfile
+    sudo docker build -t next-number-app-java . && \
+    #run
+    sudo docker swarm init && \
+    sudo docker stack deploy -c docker-compose.yml next-number-app && \
+    echo "Successfully started application"
 }
 
 close_app() {
-	sudo docker stack rm next-number-app && sudo docker swarm leave --force
+    sudo docker stack rm next-number-app && sudo docker swarm leave --force
 }
 
 usage() {
-	echo "./docker parameter"
-	echo "-s or --start to build and start next-number-app"
-	echo "-c or --close to shutdown next-number-app"
-	echo "-h or --help to get help"
+    echo "./docker parameter"
+    echo "-s or --start to build and start next-number-app"
+    echo "-c or --close to shutdown next-number-app"
+    echo "-h or --help to get help"
 }
 
 #Main
+#check for docker
+command -v docker || { echo "Requires docker installed. Aborting."; exit 1; }
+
 if [ "$1" != "" ]; then
-	case $1 in
-		-s | --start ) start_app
-		exit
-		;;
-		-c | --close ) close_app
-		exit
-		;;
-		-h | --help ) usage
-		exit
-		;;
-		* ) usage
-		exit 1
-	esac
+    case $1 in
+        -s | --start ) start_app
+        exit
+        ;;
+        -c | --close ) close_app
+        exit
+        ;;
+        -h | --help ) usage
+        exit
+        ;;
+        * ) usage
+        exit 1
+    esac
 fi
